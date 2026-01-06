@@ -55,7 +55,7 @@ const App: React.FC = () => {
     }
   });
 
-  const [activeView, setActiveView] = useState<ViewState>('LADDER');
+  const [activeView, setActiveView] = useState<ViewState>('RANKING');
   const [activeCategory, setActiveCategory] = useState<PvPCategory>(PvPCategory.OVERALL);
   const [selectedSeason, setSelectedSeason] = useState<Season>(currentSeason);
   const [isAdminMode, setIsAdminMode] = useState(false);
@@ -220,7 +220,7 @@ const App: React.FC = () => {
 
         {activeView === 'EVOLUTION' && <EvolutionView players={players} category={activeCategory} />}
 
-        {(activeView === 'LADDER' || activeView === 'RANKING') && (
+        {activeView === 'RANKING' && (
           <div className="space-y-8">
             <div className="flex flex-wrap md:flex-nowrap md:items-center justify-between gap-2 md:gap-4 bg-zinc-900/50 p-1 rounded-xl border border-zinc-800 backdrop-blur-sm">
               {(Object.values(PvPCategory) as PvPCategory[]).map((cat) => (
