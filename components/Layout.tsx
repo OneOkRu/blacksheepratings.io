@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Shield, UserCog, History, Trophy, LayoutDashboard, Zap, Activity, Menu, X, ListOrdered } from 'lucide-react';
 import { ViewState } from '../types';
@@ -32,8 +31,8 @@ export const Layout: React.FC<LayoutProps> = ({
     };
   }, [isMobileMenuOpen]);
 
+  // УДАЛИЛИ LADDER ИЗ СПИСКА
   const navigationItems = [
-    { id: 'LADDER' as ViewState, label: 'Ladder', icon: LayoutDashboard },
     { id: 'RANKING' as ViewState, label: 'Ranking', icon: ListOrdered },
     { id: 'EVOLUTION' as ViewState, label: 'Evolution', icon: Activity },
     { id: 'HISTORY' as ViewState, label: 'Log', icon: History },
@@ -55,7 +54,7 @@ export const Layout: React.FC<LayoutProps> = ({
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-20 md:h-24 flex items-center justify-between">
           <div 
             className="flex items-center gap-3 md:gap-5 cursor-pointer group" 
-            onClick={() => handleNavClick('LADDER')}
+            onClick={() => handleNavClick('RANKING')} // ТЕПЕРЬ ВЕДЕТ НА RANKING
           >
             <div className="relative">
               <div className="absolute inset-0 bg-red-600 blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
