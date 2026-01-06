@@ -1,5 +1,42 @@
 
 {
-  "players": [],
+  "players": [
+    {
+      "id": "p1",
+      "displayName": "Steve",
+      "skinName": "Steve",
+      "name": "Steve",
+      "uuid": "steve-uuid",
+      "era": "Старая школа",
+      "championships": [],
+      "lastActive": 1715000000000,
+      "stats": {
+        "2024-Autumn": {
+          "Overall": { "elo": 2300, "wins": 50, "losses": 10, "tier": "S", "manualRank": 1 },
+          "Axe & Shield": { "elo": 2200, "wins": 20, "losses": 5, "tier": "S", "manualRank": 1 },
+          "Diamond PvP": { "elo": 2400, "wins": 30, "losses": 5, "tier": "S", "manualRank": 1 },
+          "Netherite PvP": { "elo": 2300, "wins": 0, "losses": 0, "tier": "S", "manualRank": 1 }
+        }
+      }
+    },
+    {
+      "id": "p2",
+      "displayName": "Alex",
+      "skinName": "Alex",
+      "name": "Alex",
+      "uuid": "alex-uuid",
+      "era": "Новая школа",
+      "championships": [],
+      "lastActive": 1715000000000,
+      "stats": {
+        "2024-Autumn": {
+          "Overall": { "elo": 2000, "wins": 30, "losses": 15, "tier": "A", "manualRank": 2 },
+          "Axe & Shield": { "elo": 1950, "wins": 15, "losses": 7, "tier": "A", "manualRank": 2 },
+          "Diamond PvP": { "elo": 2050, "wins": 15, "losses": 8, "tier": "A", "manualRank": 2 },
+          "Netherite PvP": { "elo": 2000, "wins": 0, "losses": 0, "tier": "A", "manualRank": 2 }
+        }
+      }
+    }
+  ],
   "champs": []
 }

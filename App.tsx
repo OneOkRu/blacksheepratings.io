@@ -9,7 +9,7 @@ import { MatchHistory } from './components/MatchHistory';
 import { EvolutionView } from './components/EvolutionView';
 import { PvPCategory, Player, Match, PlayerEra, Season, Championship, BattleType, ViewState, PlayerStats } from './types';
 import { calculateEloChange, getTier, getCurrentSeason, getSeasonKey } from './utils';
-import { initialData } from './data';
+import jsonData from './data.json';
 
 const currentSeason = getCurrentSeason();
 const currentKey = getSeasonKey(currentSeason);
@@ -18,11 +18,12 @@ const App: React.FC = () => {
   const [players, setPlayers] = useState<Player[]>(() => {
     try {
       const saved = localStorage.getItem('blacksheep_players');
-      if (saved !== null) return JSON.parse(saved);
+      // Если в браузере пусто, берем из data.json
+      if (saved === null) return (jsonData.players as Player[]) || [];
+      return JSON.parse(saved);
     } catch (e) {
-      console.error("Failed to parse players from local storage", e);
+      return (jsonData.players as Player[]) || [];
     }
-    return initialData.players || [];
   });
   
   const [matches, setMatches] = useState<Match[]>(() => {
@@ -37,11 +38,11 @@ const App: React.FC = () => {
   const [champs, setChamps] = useState<Championship[]>(() => {
     try {
       const saved = localStorage.getItem('blacksheep_champs');
-      if (saved !== null) return JSON.parse(saved);
+      if (saved === null) return (jsonData.champs as Championship[]) || [];
+      return JSON.parse(saved);
     } catch (e) {
-      console.error("Failed to parse champs from local storage", e);
+      return (jsonData.champs as Championship[]) || [];
     }
-    return initialData.champs || [];
   });
 
   const [activeView, setActiveView] = useState<ViewState>('LADDER');

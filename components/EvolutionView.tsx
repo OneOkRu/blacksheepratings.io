@@ -49,7 +49,7 @@ export const EvolutionView: React.FC<EvolutionViewProps> = ({ players, category 
           }
           return prev + 1;
         });
-      }, 2000);
+      }, 1500); // Чуть быстрее для динамики
     } else if (playTimerRef.current) {
       clearInterval(playTimerRef.current);
     }
@@ -94,7 +94,7 @@ export const EvolutionView: React.FC<EvolutionViewProps> = ({ players, category 
 
   if (allSeasonKeys.length === 0 || currentIndex === -1) {
     return (
-      <div className="text-center py-48 bg-zinc-900/10 border border-zinc-800/40 border-dashed rounded-[4rem] animate-in fade-in duration-1000">
+      <div className="text-center py-48 bg-zinc-900/10 border border-zinc-800/40 border-dashed rounded-[4rem]">
         <History className="w-20 h-20 text-zinc-800 mx-auto mb-8 opacity-20" />
         <h3 className="text-3xl font-black italic text-zinc-600 uppercase tracking-tighter">History Empty</h3>
       </div>
@@ -104,38 +104,52 @@ export const EvolutionView: React.FC<EvolutionViewProps> = ({ players, category 
   const maxPower = 8000;
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-1000">
-      <div className="bg-zinc-900/40 border border-zinc-800/60 rounded-[2.5rem] p-6 sm:p-12 backdrop-blur-3xl relative overflow-hidden shadow-2xl">
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-6 mb-8 relative z-10">
+    <div className="space-y-6 animate-in fade-in duration-700">
+      <div className="bg-zinc-900/40 border border-zinc-800/60 rounded-[2.5rem] p-4 sm:p-10 backdrop-blur-3xl relative overflow-hidden shadow-2xl">
+        {/* Заголовок */}
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-4 mb-8 relative z-10">
           <div>
-            <h2 className="text-3xl md:text-5xl font-[1000] italic tracking-[-0.05em] uppercase text-white flex items-center gap-3">
-              <Sparkles className="w-6 h-6 md:w-10 md:h-10 text-red-600 animate-pulse" />
+            <h2 className="text-2xl md:text-4xl font-[1000] italic tracking-[-0.05em] uppercase text-white flex items-center gap-2">
+              <Sparkles className="w-5 h-5 md:w-8 md:h-8 text-red-600 animate-pulse" />
               Era <span className="text-red-600">Evolution</span>
             </h2>
-            <p className="text-zinc-500 text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] mt-1">{category} Timeline</p>
+            <p className="text-zinc-600 text-[7px] md:text-[9px] font-black uppercase tracking-[0.4em] mt-0.5">{category} Timeline</p>
           </div>
 
-          <div className="bg-black/80 border border-zinc-800/50 px-6 py-4 rounded-2xl flex flex-col items-center min-w-[200px]">
-             <span className="text-[8px] font-black text-zinc-600 uppercase tracking-[0.3em] mb-1">Temporal Phase</span>
-             <span className="text-2xl md:text-3xl font-[1000] italic text-red-600 tracking-tighter uppercase">
+          <div className="bg-black/80 border border-zinc-800/50 px-5 py-3 rounded-2xl flex flex-col items-center min-w-[160px] shadow-xl">
+             <span className="text-[7px] font-black text-zinc-600 uppercase tracking-[0.3em] mb-0.5">Current Phase</span>
+             <span className="text-xl md:text-2xl font-[1000] italic text-red-600 tracking-tighter uppercase leading-none">
                {currentKey.replace('-', ' ')}
              </span>
           </div>
         </div>
 
-        <div className="relative h-[250px] md:h-[400px] flex items-end justify-between gap-1 sm:gap-4 px-2 sm:px-8 border-b border-zinc-800/20 pb-6 mb-8">
-          {chartData.map((data) => (
+        {/* Интерактивный График с Анимациями */}
+        <div className="relative h-[220px] md:h-[350px] flex items-end justify-between gap-1 sm:gap-4 px-2 sm:px-8 border-b border-zinc-800/20 pb-4 mb-8">
+          {chartData.map((data, idx) => (
             <div 
-              key={`${data.id}-${currentIndex}`} 
-              className="flex-1 flex flex-col items-center group relative transition-all duration-700"
-              style={{ height: `${Math.max(15, (data.power / maxPower) * 100)}%` }}
+              key={`${data.id}`} 
+              className="flex-1 flex flex-col items-center group relative transition-all duration-700 ease-in-out"
+              style={{ 
+                height: `${Math.max(15, (data.power / maxPower) * 100)}%`,
+                transform: `scale(${isPlaying ? 1.02 : 1})`,
+              }}
             >
+              {/* Ник над головой */}
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30">
+                <span className="bg-black border border-zinc-800 px-2 py-1 rounded text-[8px] font-black text-red-500 uppercase tracking-widest">{data.name}</span>
+              </div>
+
               <div className="mb-2 transition-all duration-500 group-hover:scale-110 z-20">
-                <img src={getAvatarUrl(data.skin)} className="w-8 h-8 md:w-14 md:h-14 rounded-lg md:rounded-2xl border-2 border-zinc-900 shadow-xl" alt="" />
+                <img 
+                  src={getAvatarUrl(data.skin)} 
+                  className={`w-7 h-7 md:w-12 md:h-12 rounded-lg md:rounded-xl border-2 border-zinc-900 shadow-xl bg-zinc-800 transition-transform duration-500 ${isPlaying ? 'rotate-2' : ''}`} 
+                  alt="" 
+                />
               </div>
 
               <div 
-                className={`w-full max-w-[40px] rounded-t-lg transition-all duration-700 relative overflow-hidden ${
+                className={`w-full max-w-[45px] rounded-t-lg transition-all duration-700 ease-in-out relative overflow-hidden shadow-lg ${
                   data.tier === 'S' ? 'bg-gradient-to-t from-yellow-900 via-yellow-600 to-yellow-400' :
                   data.tier === 'A' ? 'bg-gradient-to-t from-purple-900 via-purple-600 to-purple-400' :
                   data.tier === 'B' ? 'bg-gradient-to-t from-blue-900 via-blue-600 to-blue-400' :
@@ -143,41 +157,64 @@ export const EvolutionView: React.FC<EvolutionViewProps> = ({ players, category 
                   'bg-zinc-700'
                 }`}
                 style={{ height: '100%' }}
-              ></div>
+              >
+                <div className="absolute inset-0 bg-white/5 opacity-30 animate-pulse"></div>
+              </div>
 
-              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 overflow-hidden max-w-[40px] md:max-w-none">
-                <span className="text-[6px] md:text-[8px] font-black uppercase text-zinc-500 whitespace-nowrap">
-                  {data.name}
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 overflow-hidden max-w-[35px] md:max-w-none">
+                <span className="text-[5px] md:text-[8px] font-black uppercase text-zinc-500 whitespace-nowrap tracking-tighter">
+                  #{idx + 1}
                 </span>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="bg-black/60 border border-zinc-800/50 p-6 rounded-3xl shadow-2xl max-w-5xl mx-auto">
-          <div className="flex flex-col xl:flex-row items-center gap-6">
-             <div className="flex items-center gap-3 shrink-0">
-               <button disabled={currentIndex <= 0} onClick={() => { setCurrentIndex(currentIndex - 1); setIsPlaying(false); }} className="p-3 bg-zinc-800/40 hover:bg-zinc-700 text-zinc-400 rounded-xl transition-all">
-                 <Rewind className="w-5 h-5" />
+        {/* Суперкомпактная Панель Управления */}
+        <div className="bg-black/60 border border-zinc-800/50 p-4 md:p-5 rounded-3xl shadow-2xl max-w-4xl mx-auto">
+          <div className="flex flex-col xl:flex-row items-center gap-4">
+             {/* Кнопки плеера */}
+             <div className="flex items-center gap-2 shrink-0 border-r border-zinc-800/50 pr-4">
+               <button disabled={currentIndex <= 0} onClick={() => { setCurrentIndex(currentIndex - 1); setIsPlaying(false); }} className="p-2 bg-zinc-800/40 hover:bg-zinc-700 text-zinc-500 rounded-lg transition-all disabled:opacity-20">
+                 <Rewind className="w-4 h-4" />
                </button>
-               <button onClick={() => setIsPlaying(!isPlaying)} className={`px-8 py-3 rounded-xl transition-all flex items-center gap-3 font-black text-[10px] tracking-widest ${isPlaying ? 'bg-red-600 text-white animate-pulse' : 'bg-white text-black hover:scale-105'}`}>
-                 {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current" />}
+               <button onClick={() => setIsPlaying(!isPlaying)} className={`px-5 py-2 rounded-lg transition-all flex items-center gap-2 font-black text-[9px] tracking-widest ${isPlaying ? 'bg-red-600 text-white shadow-lg' : 'bg-white text-black hover:scale-105'}`}>
+                 {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
                  {isPlaying ? 'PAUSE' : 'PLAY'}
                </button>
-               <button disabled={currentIndex >= allSeasonKeys.length - 1} onClick={() => { setCurrentIndex(currentIndex + 1); setIsPlaying(false); }} className="p-3 bg-zinc-800/40 hover:bg-zinc-700 text-zinc-400 rounded-xl transition-all">
-                 <FastForward className="w-5 h-5" />
+               <button disabled={currentIndex >= allSeasonKeys.length - 1} onClick={() => { setCurrentIndex(currentIndex + 1); setIsPlaying(false); }} className="p-2 bg-zinc-800/40 hover:bg-zinc-700 text-zinc-500 rounded-lg transition-all disabled:opacity-20">
+                 <FastForward className="w-4 h-4" />
                </button>
              </div>
              
-             <div className="flex-1 w-full space-y-3">
-               <div className="px-1 flex items-center justify-between text-[9px] font-black uppercase text-zinc-500 tracking-widest">
-                  <span>Temporal Axis</span>
-                  <span className="text-red-600">{currentIndex + 1} / {allSeasonKeys.length}</span>
+             {/* Временная шкала */}
+             <div className="flex-1 w-full space-y-2">
+               <div className="flex items-center justify-between text-[7px] font-black uppercase text-zinc-600 tracking-widest leading-none">
+                  <div className="flex items-center gap-1.5"><History className="w-3 h-3" /> Era Engine</div>
+                  <span className="text-red-700 font-mono">{currentIndex + 1} / {allSeasonKeys.length}</span>
                </div>
-               <input type="range" min="0" max={allSeasonKeys.length - 1} value={currentIndex} onChange={(e) => { setCurrentIndex(parseInt(e.target.value)); setIsPlaying(false); }} className="w-full h-1.5 bg-zinc-900 rounded-full appearance-none cursor-pointer accent-red-600" />
-               <div className="flex flex-wrap gap-2 pt-1">
+               
+               <input 
+                 type="range" 
+                 min="0" 
+                 max={allSeasonKeys.length - 1} 
+                 value={currentIndex} 
+                 onChange={(e) => { setCurrentIndex(parseInt(e.target.value)); setIsPlaying(false); }} 
+                 className="w-full h-1 bg-zinc-900 rounded-full appearance-none cursor-pointer accent-red-600" 
+               />
+               
+               {/* Переносящиеся кнопки сезонов */}
+               <div className="flex flex-wrap gap-1 mt-2">
                   {allSeasonKeys.map((key, i) => (
-                    <button key={key} onClick={() => { setCurrentIndex(i); setIsPlaying(false); }} className={`text-[8px] font-black uppercase px-3 py-1.5 rounded-lg border transition-all ${i === currentIndex ? 'bg-red-600 border-red-600 text-white shadow-lg' : 'bg-zinc-900 border-zinc-800 text-zinc-600 hover:text-zinc-300'}`}>
+                    <button 
+                      key={key} 
+                      onClick={() => { setCurrentIndex(i); setIsPlaying(false); }} 
+                      className={`text-[7px] md:text-[8px] font-black uppercase px-2 py-1 rounded-md border transition-all ${
+                        i === currentIndex 
+                          ? 'bg-red-600 border-red-600 text-white shadow-md' 
+                          : 'bg-zinc-900/30 border-zinc-800/30 text-zinc-600 hover:text-zinc-300'
+                      }`}
+                    >
                       {key.replace('-', ' ')}
                     </button>
                   ))}
