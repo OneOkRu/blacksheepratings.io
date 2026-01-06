@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { PvPCategory, Player, PlayerEra, Season, SeasonType, ChampBadge } from '../types';
 import { getTierColor, getAvatarUrl, getSeasonKey, getSeasonIcon } from '../utils';
@@ -9,7 +8,7 @@ interface LeaderboardProps {
   category: PvPCategory;
   selectedSeason: Season;
   onSeasonChange: (season: Season) => void;
-  isExpert?: boolean; // Теперь соответствует режиму RANKING
+  isExpert?: boolean; // Соответствует режиму RANKING
 }
 
 const SchoolPlaque = ({ era }: { era: PlayerEra }) => {
@@ -44,8 +43,7 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ players, category, sel
   const isOverall = category === PvPCategory.OVERALL;
   const sKey = getSeasonKey(selectedSeason);
 
-  // В Ladder (isExpert = false) сортируем только по ELO
-  // В Ranking (isExpert = true) сначала по manualRank, затем по ELO
+  // Сортировка: в Ranking (isExpert = true) сначала по manualRank, затем по ELO
   const sortedPlayers = [...players].filter(p => !!p.stats[sKey]).sort((a, b) => {
     const sA = a.stats[sKey]?.[category];
     const sB = b.stats[sKey]?.[category];
@@ -119,7 +117,6 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ players, category, sel
                 const currentStats = pStats[category];
                 const hasMatches = (currentStats?.wins || 0) + (currentStats?.losses || 0) > 0;
                 
-                // В Ladder всегда показываем индекс, в Ranking - manualRank (если есть)
                 const displayRank = isExpert ? (currentStats?.manualRank ?? idx + 1) : (idx + 1);
 
                 return (
@@ -132,7 +129,12 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ players, category, sel
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
                         <div className="relative">
-                          <img src={getAvatarUrl(player.skinName || player.name)} className="w-14 h-14 rounded-2xl shadow-xl border border-white/5" alt="" />
+                          {/* ИСПРАВЛЕНИЕ ТУТ: Добавлены классы flex-shrink-0 aspect-square object-cover */}
+                          <img 
+                            src={getAvatarUrl(player.skinName || player.name)} 
+                            className="w-14 h-14 rounded-2xl shadow-xl border border-white/5 flex-shrink-0 aspect-square object-cover" 
+                            alt="" 
+                          />
                           <div className="absolute -bottom-1 -right-1 bg-zinc-900 rounded-full p-1 border border-zinc-800">
                              <div className={`w-2 h-2 rounded-full ${Date.now() - player.lastActive < 3600000 ? 'bg-green-500 animate-pulse' : 'bg-zinc-700'}`}></div>
                           </div>
