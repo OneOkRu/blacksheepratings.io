@@ -1,68 +1,1786 @@
-
-import { Player, Championship, PlayerEra, PvPCategory } from './types';
-
-export const initialData: { players: Player[], champs: Championship[] } = {
+{
   "players": [
     {
-      "id": "p1",
-      "displayName": "Steve",
-      "skinName": "Steve",
-      "name": "Steve",
-      "uuid": "steve-uuid",
-      "era": PlayerEra.OLD_SCHOOL,
+      "id": "z4y3i33mp",
+      "displayName": "RQSXLLY",
+      "skinName": "Solleise",
+      "name": "RQSXLLY",
+      "uuid": "RQSXLLY",
+      "era": "Новая школа",
       "championships": [],
-      "lastActive": Date.now(),
+      "lastActive": 1767700468145,
       "stats": {
-        "2024-Spring": {
-          "Overall": { "elo": 1500, "wins": 10, "losses": 2, "tier": "B" },
-          "Axe & Shield": { "elo": 1450, "wins": 5, "losses": 1, "tier": "B" },
-          "Diamond PvP": { "elo": 1550, "wins": 5, "losses": 1, "tier": "B" },
-          "Netherite PvP": { "elo": 1500, "wins": 0, "losses": 0, "tier": "B" }
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "A",
+            "manualRank": 2
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 2
+          }
         },
-        "2024-Summer": {
-          "Overall": { "elo": 1850, "wins": 25, "losses": 5, "tier": "A" },
-          "Axe & Shield": { "elo": 1800, "wins": 10, "losses": 2, "tier": "A" },
-          "Diamond PvP": { "elo": 1900, "wins": 15, "losses": 3, "tier": "A" },
-          "Netherite PvP": { "elo": 1850, "wins": 0, "losses": 0, "tier": "A" }
+        "2025-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          }
+        },
+        "2025-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          }
+        },
+        "2025-Spring": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          }
+        },
+        "2025-Winter": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          }
         },
         "2024-Autumn": {
-          "Overall": { "elo": 2300, "wins": 50, "losses": 10, "tier": "S" },
-          "Axe & Shield": { "elo": 2200, "wins": 20, "losses": 5, "tier": "S" },
-          "Diamond PvP": { "elo": 2400, "wins": 30, "losses": 5, "tier": "S" },
-          "Netherite PvP": { "elo": 2300, "wins": 0, "losses": 0, "tier": "S" }
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          }
+        },
+        "2024-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
         }
-      }
+      },
+      "primeTime": "Spring/summer 2025"
     },
     {
-      "id": "p2",
-      "displayName": "Alex",
-      "skinName": "Alex",
-      "name": "Alex",
-      "uuid": "alex-uuid",
-      "era": PlayerEra.NEW_SCHOOL,
+      "id": "4fsq33nsf",
+      "displayName": "ClubOne_",
+      "skinName": "ClubOne_",
+      "name": "ClubOne_",
+      "uuid": "ClubOne_",
+      "era": "Новая школа",
       "championships": [],
-      "lastActive": Date.now(),
+      "lastActive": 1767700621310,
       "stats": {
-        "2024-Spring": {
-          "Overall": { "elo": 1300, "wins": 5, "losses": 5, "tier": "C" },
-          "Axe & Shield": { "elo": 1250, "wins": 2, "losses": 3, "tier": "C" },
-          "Diamond PvP": { "elo": 1350, "wins": 3, "losses": 2, "tier": "C" },
-          "Netherite PvP": { "elo": 1300, "wins": 0, "losses": 0, "tier": "C" }
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 1
+          }
         },
-        "2024-Summer": {
-          "Overall": { "elo": 1600, "wins": 15, "losses": 10, "tier": "B" },
-          "Axe & Shield": { "elo": 1550, "wins": 7, "losses": 5, "tier": "B" },
-          "Diamond PvP": { "elo": 1650, "wins": 8, "losses": 5, "tier": "B" },
-          "Netherite PvP": { "elo": 1600, "wins": 0, "losses": 0, "tier": "B" }
+        "2025-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          }
+        },
+        "2025-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          }
+        },
+        "2025-Spring": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          }
+        },
+        "2025-Winter": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 4
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 4
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 4
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 4
+          }
         },
         "2024-Autumn": {
-          "Overall": { "elo": 2000, "wins": 30, "losses": 15, "tier": "A" },
-          "Axe & Shield": { "elo": 1950, "wins": 15, "losses": 7, "tier": "A" },
-          "Diamond PvP": { "elo": 2050, "wins": 15, "losses": 8, "tier": "A" },
-          "Netherite PvP": { "elo": 2000, "wins": 0, "losses": 0, "tier": "A" }
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 4
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 4
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 4
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 4
+          }
+        },
+        "2024-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
         }
-      }
+      },
+      "primeTime": "Spring 2025"
+    },
+    {
+      "id": "pon93bzry",
+      "displayName": "hkmhk",
+      "skinName": "LaGoat7112",
+      "name": "hkmhk",
+      "uuid": "hkmhk",
+      "era": "Старая школа",
+      "championships": [],
+      "lastActive": 1767700961612,
+      "stats": {
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 3
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 3
+          }
+        },
+        "2025-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          }
+        },
+        "2025-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 4
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 3
+          }
+        },
+        "2025-Spring": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          }
+        },
+        "2025-Winter": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          }
+        },
+        "2024-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          }
+        },
+        "2024-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          }
+        },
+        "2023-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 3
+          }
+        }
+      },
+      "primeTime": "Before spring 2025"
+    },
+    {
+      "id": "klzbj9tu5",
+      "displayName": "Richard_101",
+      "skinName": "__Konner__",
+      "name": "Richard_101",
+      "uuid": "Richard_101",
+      "era": "Старая школа",
+      "championships": [],
+      "lastActive": 1767701048151,
+      "stats": {
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "A",
+            "manualRank": 4
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "A",
+            "manualRank": 4
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "A",
+            "manualRank": 4
+          }
+        },
+        "2025-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 4
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 4
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D",
+            "manualRank": 4
+          }
+        },
+        "2025-Spring": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 4
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 4
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 4
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 4
+          }
+        },
+        "2025-Winter": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 2
+          }
+        },
+        "2025-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 5
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 5
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 5
+          }
+        },
+        "2024-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          }
+        },
+        "2024-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          }
+        },
+        "2023-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 2
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 2
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 2
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 2
+          }
+        }
+      },
+      "primeTime": "before spring 2025"
+    },
+    {
+      "id": "doxveebjo",
+      "displayName": "Mintcl",
+      "skinName": "Efrain204",
+      "name": "Mintcl",
+      "uuid": "Mintcl",
+      "era": "Новая школа",
+      "championships": [],
+      "lastActive": 1767701528150,
+      "stats": {
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "B",
+            "manualRank": 4
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "B",
+            "manualRank": 4
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "B",
+            "manualRank": 4
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "B",
+            "manualRank": 5
+          }
+        },
+        "2025-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 5
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 5
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 5
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 5
+          }
+        },
+        "2025-Spring": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 5
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 5
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 5
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 5
+          }
+        },
+        "2025-Winter": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 5
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 5
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 5
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 5
+          }
+        },
+        "2025-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "B",
+            "manualRank": 6
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          }
+        },
+        "2024-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        },
+        "2024-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        }
+      },
+      "primeTime": "Autumn 2025"
+    },
+    {
+      "id": "0vfdjf6l3",
+      "displayName": "Nekaa_",
+      "skinName": "Nekaa_",
+      "name": "Nekaa_",
+      "uuid": "Nekaa_",
+      "era": "Новейшая школа",
+      "championships": [],
+      "lastActive": 1767701925167,
+      "stats": {
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "A",
+            "manualRank": 6
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "B",
+            "manualRank": 6
+          }
+        }
+      },
+      "primeTime": "now"
+    },
+    {
+      "id": "qydf570p6",
+      "displayName": "xomyak",
+      "skinName": "xomyak",
+      "name": "xomyak",
+      "uuid": "xomyak",
+      "era": "Новая школа",
+      "championships": [],
+      "lastActive": 1767701985393,
+      "stats": {
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "B",
+            "manualRank": 7
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "B",
+            "manualRank": 7
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "B",
+            "manualRank": 7
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "C",
+            "manualRank": 7
+          }
+        },
+        "2025-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          }
+        },
+        "2025-Spring": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C",
+            "manualRank": 6
+          }
+        },
+        "2025-Winter": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        },
+        "2025-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "C"
+          }
+        },
+        "2024-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        },
+        "2024-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        }
+      },
+      "primeTime": "Fighnight vs RQXSLLY"
+    },
+    {
+      "id": "mhmuyb0oz",
+      "displayName": "OWL_FNS",
+      "skinName": "OWL_FNS",
+      "name": "OWL_FNS",
+      "uuid": "OWL_FNS",
+      "era": "Новая школа",
+      "championships": [],
+      "lastActive": 1767702126987,
+      "stats": {
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D",
+            "manualRank": 9
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D",
+            "manualRank": 9
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D",
+            "manualRank": 9
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D",
+            "manualRank": 9
+          }
+        },
+        "2025-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D",
+            "manualRank": 7
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D",
+            "manualRank": 7
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D",
+            "manualRank": 7
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D",
+            "manualRank": 7
+          }
+        },
+        "2025-Winter": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        },
+        "2025-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        },
+        "2025-Spring": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        },
+        "2024-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        },
+        "2024-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "D"
+          }
+        }
+      },
+      "primeTime": "Vanillabox"
+    },
+    {
+      "id": "vqlzl5hbt",
+      "displayName": "www",
+      "skinName": "www",
+      "name": "www",
+      "uuid": "www",
+      "era": "Новая школа",
+      "championships": [],
+      "lastActive": 1767708243535,
+      "stats": {
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D"
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D"
+          }
+        },
+        "2025-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "A",
+            "manualRank": 4
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 4
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 4
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 4
+          }
+        }
+      },
+      "primeTime": "summer 2025"
+    },
+    {
+      "id": "rqb9lokdg",
+      "displayName": "pisa777228",
+      "skinName": "pisa777228",
+      "name": "pisa777228",
+      "uuid": "pisa777228",
+      "era": "Старая школа",
+      "championships": [],
+      "lastActive": 1767718414877,
+      "stats": {
+        "2026-Winter": {
+          "Axe & Shield": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D"
+          },
+          "Diamond PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D"
+          },
+          "Netherite PvP": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D"
+          },
+          "Overall": {
+            "elo": 1200,
+            "wins": 0,
+            "losses": 0,
+            "tier": "D"
+          }
+        },
+        "2024-Summer": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          }
+        },
+        "2023-Autumn": {
+          "Axe & Shield": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Diamond PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Netherite PvP": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          },
+          "Overall": {
+            "wins": 0,
+            "losses": 0,
+            "elo": 1200,
+            "tier": "S",
+            "manualRank": 1
+          }
+        }
+      },
+      "customRank": "FunTime legend",
+      "primeTime": "FunTime"
     }
   ],
   "champs": []
-};
+}
