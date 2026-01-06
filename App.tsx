@@ -9,8 +9,6 @@ import { MatchHistory } from './components/MatchHistory';
 import { EvolutionView } from './components/EvolutionView';
 import { PvPCategory, Player, Match, PlayerEra, Season, Championship, BattleType, ViewState, PlayerStats } from './types';
 import { calculateEloChange, getTier, getCurrentSeason, getSeasonKey } from './utils';
-
-// Импортируем начальные данные из TS файла для лучшей совместимости с ESM
 import { initialData } from './data';
 
 const currentSeason = getCurrentSeason();
@@ -18,19 +16,31 @@ const currentKey = getSeasonKey(currentSeason);
 
 const App: React.FC = () => {
   const [players, setPlayers] = useState<Player[]>(() => {
-    const saved = localStorage.getItem('blacksheep_players');
-    if (saved !== null) return JSON.parse(saved);
+    try {
+      const saved = localStorage.getItem('blacksheep_players');
+      if (saved !== null) return JSON.parse(saved);
+    } catch (e) {
+      console.error("Failed to parse players from local storage", e);
+    }
     return initialData.players || [];
   });
   
   const [matches, setMatches] = useState<Match[]>(() => {
-    const saved = localStorage.getItem('blacksheep_matches');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('blacksheep_matches');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
   });
 
   const [champs, setChamps] = useState<Championship[]>(() => {
-    const saved = localStorage.getItem('blacksheep_champs');
-    if (saved !== null) return JSON.parse(saved);
+    try {
+      const saved = localStorage.getItem('blacksheep_champs');
+      if (saved !== null) return JSON.parse(saved);
+    } catch (e) {
+      console.error("Failed to parse champs from local storage", e);
+    }
     return initialData.champs || [];
   });
 
@@ -74,9 +84,6 @@ const App: React.FC = () => {
     setPlayers(newPlayers);
     setChamps(newChamps);
     setMatches([]);
-    localStorage.setItem('blacksheep_players', JSON.stringify(newPlayers));
-    localStorage.setItem('blacksheep_matches', JSON.stringify([]));
-    localStorage.setItem('blacksheep_champs', JSON.stringify(newChamps));
   };
 
   const handleRecordMatch = (winnerId: string, participantIds: string[], type: BattleType, category: Exclude<PvPCategory, PvPCategory.OVERALL>, location?: string) => {
@@ -159,7 +166,7 @@ const App: React.FC = () => {
   const handleAddChampionship = (seasonKey: string, name: string, w: string, s: string, t: string) => {
     setChamps(prev => [{ id: Math.random().toString(36).substr(2, 9), seasonKey, name, winnerId: w, secondId: s, thirdId: t, timestamp: Date.now() }, ...prev]);
     setPlayers(prev => prev.map(p => {
-      let badges = [...p.championships];
+      let badges = [...(p.championships || [])];
       if (p.id === w) badges.push({ seasonKey, place: 1 });
       if (p.id === s) badges.push({ seasonKey, place: 2 });
       if (p.id === t) badges.push({ seasonKey, place: 3 });
