@@ -127,29 +127,34 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ players, category, sel
                        </span>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex items-center gap-4">
-                        <div className="relative">
-                          {/* ИСПРАВЛЕНИЕ ТУТ: Добавлены классы flex-shrink-0 aspect-square object-cover */}
+                      {/* КОНТЕЙНЕР С НИКОМ И СКИНOM: Добавлено min-w-0 */}
+                      <div className="flex items-center gap-4 min-w-0">
+                        {/* ОБЕРТКА СКИНА: Жесткий размер через style */}
+                        <div className="relative flex-shrink-0" style={{ width: '56px', height: '56px', minWidth: '56px' }}>
                           <img 
                             src={getAvatarUrl(player.skinName || player.name)} 
-                            className="w-14 h-14 rounded-2xl shadow-xl border border-white/5 flex-shrink-0 aspect-square object-cover" 
+                            className="w-full h-full rounded-2xl shadow-xl border border-white/5 flex-shrink-0 object-cover aspect-square" 
+                            style={{ minWidth: '56px', minHeight: '56px', display: 'block' }}
                             alt="" 
                           />
-                          <div className="absolute -bottom-1 -right-1 bg-zinc-900 rounded-full p-1 border border-zinc-800">
+                          <div className="absolute -bottom-1 -right-1 bg-zinc-900 rounded-full p-1 border border-zinc-800 z-10">
                              <div className={`w-2 h-2 rounded-full ${Date.now() - player.lastActive < 3600000 ? 'bg-green-500 animate-pulse' : 'bg-zinc-700'}`}></div>
                           </div>
                         </div>
-                        <div className="flex flex-col gap-1.5">
+                        {/* ТЕКСТОВЫЙ БЛОК: Добавлено overflow-hidden и truncate */}
+                        <div className="flex flex-col gap-1.5 min-w-0 overflow-hidden">
                           <div className="flex items-center gap-2">
-                            <span className="font-black text-xl text-white tracking-tight">{player.displayName}</span>
-                            <div className="flex flex-wrap gap-1 max-w-[150px]">
+                            <span className="font-black text-xl text-white tracking-tight truncate">
+                              {player.displayName}
+                            </span>
+                            <div className="flex flex-wrap gap-1 shrink-0">
                               {player.championships?.map((b, i) => <ChampionshipBadge key={i} badge={b} />)}
                             </div>
                           </div>
                           <div className="flex items-center gap-3">
                              <SchoolPlaque era={player.era} />
-                             {player.customRank && <span className="text-red-500 flex items-center gap-1 text-[9px] font-black uppercase"><Sparkles className="w-3 h-3" />{player.customRank}</span>}
-                             {player.location && <span className="flex items-center gap-1 text-[9px] font-bold text-zinc-500 uppercase"><MapPin className="w-3 h-3" />{player.location}</span>}
+                             {player.customRank && <span className="text-red-500 flex items-center gap-1 text-[9px] font-black uppercase whitespace-nowrap"><Sparkles className="w-3 h-3" />{player.customRank}</span>}
+                             {player.location && <span className="flex items-center gap-1 text-[9px] font-bold text-zinc-500 uppercase truncate"><MapPin className="w-3 h-3" />{player.location}</span>}
                           </div>
                         </div>
                       </div>
