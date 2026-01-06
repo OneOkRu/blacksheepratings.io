@@ -1,0 +1,5 @@
+{
+  "name": "BlackSheep Ratings",
+  "description": "A professional Minecraft PvP ranking platform similar to MCTier, featuring leaderboards for Axe & Shield, Diamond, and Netherite tiers with match recording and admin management.",
+  "requestFramePermissions": []
+}
