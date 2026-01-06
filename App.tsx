@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Layout } from './components/Layout';
 import { Leaderboard } from './components/Leaderboard';
@@ -9,36 +8,47 @@ import { MatchHistory } from './components/MatchHistory';
 import { EvolutionView } from './components/EvolutionView';
 import { PvPCategory, Player, Match, PlayerEra, Season, Championship, BattleType, ViewState, PlayerStats } from './types';
 import { calculateEloChange, getTier, getCurrentSeason, getSeasonKey } from './utils';
+
+// 1. ИМПОРТИРУЕМ НАПРЯМУЮ ИЗ JSON
 import jsonData from './data.json';
 
 const currentSeason = getCurrentSeason();
 const currentKey = getSeasonKey(currentSeason);
 
 const App: React.FC = () => {
+  // 2. УМНАЯ ИНИЦИАЛИЗАЦИЯ ИГРОКОВ
   const [players, setPlayers] = useState<Player[]>(() => {
     try {
       const saved = localStorage.getItem('blacksheep_players');
-      // Если в браузере пусто, берем из data.json
-      if (saved === null) return (jsonData.players as Player[]) || [];
+      // Если человек зашел впервые (null) или у него пустой список ([])
+      // мы берем данные из jsonData.players
+      if (!saved || saved === '[]') {
+        return (jsonData.players as Player[]) || [];
+      }
       return JSON.parse(saved);
     } catch (e) {
       return (jsonData.players as Player[]) || [];
     }
   });
   
+  // 3. УМНАЯ ИНИЦИАЛИЗАЦИЯ МАТЧЕЙ
   const [matches, setMatches] = useState<Match[]>(() => {
     try {
       const saved = localStorage.getItem('blacksheep_matches');
-      return saved ? JSON.parse(saved) : [];
+      // Матчи обычно начинаются с нуля, но если нужно тоже из JSON - добавь проверку
+      return (saved && saved !== '[]') ? JSON.parse(saved) : [];
     } catch (e) {
       return [];
     }
   });
 
+  // 4. УМНАЯ ИНИЦИАЛИЗАЦИЯ ЧЕМПИОНАТОВ
   const [champs, setChamps] = useState<Championship[]>(() => {
     try {
       const saved = localStorage.getItem('blacksheep_champs');
-      if (saved === null) return (jsonData.champs as Championship[]) || [];
+      if (!saved || saved === '[]') {
+        return (jsonData.champs as Championship[]) || [];
+      }
       return JSON.parse(saved);
     } catch (e) {
       return (jsonData.champs as Championship[]) || [];
@@ -51,12 +61,14 @@ const App: React.FC = () => {
   const [isAdminMode, setIsAdminMode] = useState(false);
   const [isLoggingMatch, setIsLoggingMatch] = useState(false);
 
+  // СОХРАНЕНИЕ
   useEffect(() => {
     localStorage.setItem('blacksheep_players', JSON.stringify(players));
     localStorage.setItem('blacksheep_matches', JSON.stringify(matches));
     localStorage.setItem('blacksheep_champs', JSON.stringify(champs));
   }, [players, matches, champs]);
 
+  // ДАЛЬШЕ ТВОИ ФУНКЦИИ БЕЗ ИЗМЕНЕНИЙ (handleAddPlayer, handleRecordMatch и т.д.)
   const handleAddPlayer = (name: string) => {
     const newPlayer: Player = {
       id: Math.random().toString(36).substr(2, 9),
@@ -175,6 +187,7 @@ const App: React.FC = () => {
     }));
   };
 
+  // ОТРИСОВКА (Layout и прочее остается твоим)
   return (
     <Layout 
       onAdminToggle={() => setIsAdminMode(!isAdminMode)} 
