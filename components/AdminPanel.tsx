@@ -1,7 +1,6 @@
-
 import React, { useState, useRef } from 'react';
 import { Player, PlayerEra, PvPCategory, PlayerStats, Championship, Season, SeasonType } from '../types';
-import { Edit2, Trash2, X, ShieldCheck, Lock, Trophy, Download, Upload, Calendar, ChevronLeft, ChevronRight, Copy, Check, MapPin, Sparkles, Clock } from 'lucide-react';
+import { Edit2, Trash2, X, ShieldCheck, Lock, Trophy, Download, Upload, Calendar, ChevronLeft, ChevronRight, Copy, Check, MapPin, Sparkles, Clock, Medal, UserCog } from 'lucide-react';
 import { getAvatarUrl, getSeasonKey, getSeasonIcon } from '../utils';
 
 interface AdminPanelProps {
@@ -24,6 +23,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ players, champs, onAdd, 
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
+  // Состояния для формы кубков
   const [champName, setChampName] = useState('');
   const [champWinner, setChampWinner] = useState('');
   const [champSecond, setChampSecond] = useState('');
@@ -50,6 +50,19 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ players, champs, onAdd, 
     } else {
       alert('Неверный код доступа');
     }
+  };
+
+  const handleAwardCups = () => {
+    if (!champName || !champWinner) {
+      alert("Введите название турнира и выберите чемпиона!");
+      return;
+    }
+    onAddChamp(targetKey, champName, champWinner, champSecond, champThird);
+    setChampName('');
+    setChampWinner('');
+    setChampSecond('');
+    setChampThird('');
+    alert("Кубки успешно выданы игрокам!");
   };
 
   const navigateEditSeason = (dir: number) => {
@@ -169,6 +182,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ players, champs, onAdd, 
 
   return (
     <div className="space-y-8 animate-in slide-in-from-top-4 duration-300">
+      {/* HEADER */}
       <div className="bg-red-600 rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-4">
           <Calendar className="w-6 h-6 text-white" />
@@ -183,11 +197,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ players, champs, onAdd, 
         </div>
       </div>
 
+      {/* TABS */}
       <div className="flex p-1 bg-zinc-900 border border-zinc-800 rounded-2xl">
         <button onClick={() => setActiveTab('PLAYERS')} className={`flex-1 py-3 rounded-xl text-[10px] font-black uppercase ${activeTab === 'PLAYERS' ? 'bg-zinc-100 text-black' : 'text-zinc-500'}`}>Players Registry</button>
         <button onClick={() => setActiveTab('CUPS')} className={`flex-1 py-3 rounded-xl text-[10px] font-black uppercase ${activeTab === 'CUPS' ? 'bg-zinc-100 text-black' : 'text-zinc-500'}`}>Cups</button>
       </div>
 
+      {/* TAB 1: PLAYERS */}
       {activeTab === 'PLAYERS' && (
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -212,6 +228,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ players, champs, onAdd, 
                         <input value={editData.customRank || ''} onChange={e => setEditData({...editData, customRank: e.target.value})} placeholder="Suffix (e.g. Legend)" className="bg-zinc-900 p-3 rounded-xl text-sm font-bold border border-red-900/30 text-red-500" />
                         <input value={editData.location || ''} onChange={e => setEditData({...editData, location: e.target.value})} placeholder="Location (RU, EU...)" className="bg-zinc-900 p-3 rounded-xl text-sm font-bold border border-zinc-800" />
                         <input value={editData.primeTime || ''} onChange={e => setEditData({...editData, primeTime: e.target.value})} placeholder="Peak Period (2023-2024)" className="bg-zinc-900 p-3 rounded-xl text-sm font-bold border border-zinc-800" />
+                        <select 
+                          value={editData.era}
+                          onChange={(e) => setEditData({...editData, era: e.target.value as PlayerEra})}
+                          className="bg-zinc-900 p-3 rounded-xl text-sm font-bold border border-zinc-800 text-white"
+                        >
+                          {Object.values(PlayerEra).map(era => <option key={era} value={era}>{era}</option>)}
+                        </select>
                       </div>
                       
                       <div className="border-t border-zinc-800 pt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -241,7 +264,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ players, champs, onAdd, 
                             <span className="font-black italic text-white">{player.displayName}</span>
                             {player.customRank && <span className="text-red-500 text-[8px] font-black uppercase px-1 bg-red-500/10 rounded">{player.customRank}</span>}
                           </div>
-                          <span className="text-[9px] text-zinc-600 font-bold uppercase">{player.location || 'Unknown'} • {player.primeTime || 'TBD'}</span>
+                          <span className="text-[9px] text-zinc-600 font-bold uppercase">{player.era} • {player.location || 'Unknown'}</span>
                         </div>
                       </div>
                       <div className="flex gap-2">
@@ -258,6 +281,91 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ players, champs, onAdd, 
           </div>
         </div>
       )}
+
+      {/* TAB 2: CUPS (ИСПРАВЛЕНО) */}
+      {activeTab === 'CUPS' && (
+        <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 space-y-8 animate-in zoom-in-95 duration-300">
+          <div className="flex items-center gap-4 text-yellow-500">
+            <Trophy className="w-8 h-8" />
+            <h3 className="text-xl font-black uppercase tracking-tighter italic">Award Medals</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-2">
+              <label className="text-[10px] font-black uppercase text-zinc-500 ml-1">Event Title</label>
+              <input 
+                type="text" 
+                placeholder="e.g. Winter Major 2025" 
+                value={champName}
+                onChange={(e) => setChampName(e.target.value)}
+                className="w-full bg-black border border-zinc-800 rounded-2xl px-5 py-4 font-bold text-white focus:outline-none focus:border-yellow-500 transition-colors"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[10px] font-black uppercase text-zinc-500 ml-1">Season</label>
+              <div className="w-full bg-zinc-800/30 border border-zinc-800 rounded-2xl px-5 py-4 font-black text-zinc-400 uppercase tracking-widest">
+                {targetKey}
+              </div>
+            </div>
+
+            <div className="space-y-4 md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-yellow-500 flex items-center gap-2">
+                  <Medal className="w-4 h-4" /> 1st Place (Gold)
+                </label>
+                <select 
+                  value={champWinner}
+                  onChange={(e) => setChampWinner(e.target.value)}
+                  className="w-full bg-black border border-zinc-800 rounded-2xl px-4 py-4 text-sm font-bold text-white outline-none focus:border-yellow-500"
+                >
+                  <option value="">Select Champion...</option>
+                  {players.map(p => <option key={p.id} value={p.id}>{p.displayName}</option>)}
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-zinc-300 flex items-center gap-2">
+                  <Medal className="w-4 h-4" /> 2nd Place (Silver)
+                </label>
+                <select 
+                  value={champSecond}
+                  onChange={(e) => setChampSecond(e.target.value)}
+                  className="w-full bg-black border border-zinc-800 rounded-2xl px-4 py-4 text-sm font-bold text-white outline-none focus:border-zinc-400"
+                >
+                  <option value="">Select Runner-up...</option>
+                  {players.map(p => <option key={p.id} value={p.id}>{p.displayName}</option>)}
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-orange-600 flex items-center gap-2">
+                  <Medal className="w-4 h-4" /> 3rd Place (Bronze)
+                </label>
+                <select 
+                  value={champThird}
+                  onChange={(e) => setChampThird(e.target.value)}
+                  className="w-full bg-black border border-zinc-800 rounded-2xl px-4 py-4 text-sm font-bold text-white outline-none focus:border-orange-600"
+                >
+                  <option value="">Select Third Place...</option>
+                  {players.map(p => <option key={p.id} value={p.id}>{p.displayName}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <button 
+              onClick={handleAwardCups}
+              className="md:col-span-2 w-full py-5 bg-yellow-500 text-black font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-white transition-all shadow-xl shadow-yellow-500/10"
+            >
+              Confirm Tournament Results
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className="pt-8 flex justify-center">
+        <button onClick={onClose} className="text-zinc-500 hover:text-white font-black uppercase text-[10px] tracking-widest">Close Control Interface</button>
+      </div>
     </div>
   );
 };
